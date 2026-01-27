@@ -3,12 +3,10 @@ let numeroLimte = 10;
 let numeroSecreto = gerarNumeroAleatorio();
 let tentativas = 1; 
 
-// Adicionei um terceiro parâmetro 'falar' que por padrão é true
 function exibirTextoNaTela(tag, texto, falar = true) {
     let campo = document.querySelector(tag);
     campo.innerHTML = texto;
     
-    // Só entra aqui se 'falar' for verdadeiro
     if (falar && 'speechSynthesis' in window) {
         let utterance = new SpeechSynthesisUtterance(texto);
         utterance.lang = 'pt-BR'; 
@@ -17,10 +15,7 @@ function exibirTextoNaTela(tag, texto, falar = true) {
     }
 }
  function exibirMensagemInicial() {
-    // Exibe o título visualmente, mas NÃO fala (passamos o 3º parâmetro como false)
     exibirTextoNaTela('h1', 'Jogo do número secreto', false);
-    
-    // Exibe o parágrafo e FALA (passamos true ou deixamos padrão)
     exibirTextoNaTela('p', 'Escolha um número entre 1 e 10', true);
 }
 
@@ -70,3 +65,4 @@ function reiniciarJogo(){
     exibirMensagemInicial();
     document.getElementById('reiniciar').setAttribute('disabled', true);
 }
+
